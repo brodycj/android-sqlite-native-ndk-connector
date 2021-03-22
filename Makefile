@@ -8,5 +8,5 @@ javabuild:
 	cd build && jar cf ../sqlite-connector.jar *
 
 clean:
-	rm -rf build sqlite-connector.jar
+	rm -rf build *.jar
 
