@@ -9,7 +9,7 @@ package io.liteglue;
 
 public class SQLiteNative {
 
-  public static final int SQLC_API_VERSION = 1;
+  public static final int SQLC_API_VERSION = 2;
   public static final int SQLC_OPEN_READONLY = 0x00001;
   public static final int SQLC_OPEN_READWRITE = 0x00002;
   public static final int SQLC_OPEN_CREATE = 0x00004;
