@@ -1,4 +1,4 @@
-# Android sqlite connector
+# Android SQLite native NDK connector
 
 Java classes with abstract interface layers to provide a simple, easy-to-use Java interface to the NDK library (may be adapted for other Java environments).
 
