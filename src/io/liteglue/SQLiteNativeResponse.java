@@ -1,10 +1,10 @@
 package io.liteglue;
 
-public class SQLiteResponse {
+public class SQLiteNativeResponse {
     private int result;
     private long handle;
 
-    public SQLiteResponse(int result, long handle) {
+    public SQLiteNativeResponse(int result, long handle) {
         this.result = result;
         this.handle = handle;
     }

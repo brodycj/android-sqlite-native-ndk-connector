@@ -11,7 +11,7 @@ package io.liteglue;
     /* check state (should be checked by caller): */
     if (dbfilename == null || dbhandle != 0) return SQLCode.MISUSE;
 
-    SQLiteResponse response = SQLiteNative.sqlc_db_open(dbfilename, openflags);
+    SQLiteNativeResponse response = SQLiteNDKNativeDriver.sqlc_db_open(dbfilename, openflags);
     if(response.getResult() != SQLCode.OK) {
       return -response.getResult();
     }
@@ -25,7 +25,7 @@ package io.liteglue;
     /* check state (should be checked by caller): */
     if (dbhandle == 0) return SQLCode.MISUSE;
 
-    return SQLiteNative.sqlc_db_close(this.dbhandle);
+    return SQLiteNDKNativeDriver.sqlc_db_close(this.dbhandle);
   }
 
   @Override
@@ -46,7 +46,7 @@ package io.liteglue;
     /* check state (should be checked by caller): */
     if (dbhandle == 0) return -1; /* illegit value */
 
-    return SQLiteNative.sqlc_db_last_insert_rowid(dbhandle);
+    return SQLiteNDKNativeDriver.sqlc_db_last_insert_rowid(dbhandle);
   }
 
   @Override
@@ -54,14 +54,14 @@ package io.liteglue;
     /* check state (should be checked by caller): */
     if (dbhandle == 0) return -1; /* illegit value */
 
-    return SQLiteNative.sqlc_db_total_changes(dbhandle);
+    return SQLiteNDKNativeDriver.sqlc_db_total_changes(dbhandle);
   }
 
   @Override
   public String getLastErrorMessage() {
     /* check state (should be checked by caller): */
     if (dbhandle == 0) return null; /* illegit value */
-    return SQLiteNative.sqlc_db_errmsg_native(dbhandle);
+    return SQLiteNDKNativeDriver.sqlc_db_errmsg_native(dbhandle);
   }
 
   // XXX TODO make this reusable:
@@ -75,7 +75,7 @@ package io.liteglue;
       /* check state (should be checked by caller): */
       if (sql == null || sthandle != 0) return SQLCode.MISUSE;
 
-      SQLiteResponse response = SQLiteNative.sqlc_db_prepare_st(dbhandle, sql);
+      SQLiteNativeResponse response = SQLiteNDKNativeDriver.sqlc_db_prepare_st(dbhandle, sql);
       if(response.getResult() != SQLCode.OK) {
         return -response.getResult();
       }
@@ -89,7 +89,7 @@ package io.liteglue;
       /* check state (should be checked by caller): */
       if (sthandle == 0) return SQLCode.MISUSE;
 
-      return SQLiteNative.sqlc_st_bind_double(this.sthandle, pos, val);
+      return SQLiteNDKNativeDriver.sqlc_st_bind_double(this.sthandle, pos, val);
     }
 
     @Override
@@ -97,7 +97,7 @@ package io.liteglue;
       /* check state (should be checked by caller): */
       if (sthandle == 0) return SQLCode.MISUSE;
 
-      return SQLiteNative.sqlc_st_bind_int(this.sthandle, pos, val);
+      return SQLiteNDKNativeDriver.sqlc_st_bind_int(this.sthandle, pos, val);
     }
 
     @Override
@@ -105,7 +105,7 @@ package io.liteglue;
       /* check state (should be checked by caller): */
       if (sthandle == 0) return SQLCode.MISUSE;
 
-      return SQLiteNative.sqlc_st_bind_long(this.sthandle, pos, val);
+      return SQLiteNDKNativeDriver.sqlc_st_bind_long(this.sthandle, pos, val);
     }
 
     @Override
@@ -113,7 +113,7 @@ package io.liteglue;
       /* check state (should be checked by caller): */
       if (sthandle == 0) return SQLCode.MISUSE;
 
-      return SQLiteNative.sqlc_st_bind_null(this.sthandle, pos);
+      return SQLiteNDKNativeDriver.sqlc_st_bind_null(this.sthandle, pos);
     }
 
     @Override
@@ -121,7 +121,7 @@ package io.liteglue;
       /* check state (should be checked by caller): */
       if (sthandle == 0) return SQLCode.MISUSE;
 
-      return SQLiteNative.sqlc_st_bind_text_native(this.sthandle, pos, val);
+      return SQLiteNDKNativeDriver.sqlc_st_bind_text_native(this.sthandle, pos, val);
     }
 
     @Override
@@ -129,7 +129,7 @@ package io.liteglue;
       /* check state (should be checked by caller): */
       if (sthandle == 0) return SQLCode.MISUSE;
 
-      return SQLiteNative.sqlc_st_step(this.sthandle);
+      return SQLiteNDKNativeDriver.sqlc_st_step(this.sthandle);
     }
 
     @Override
@@ -137,7 +137,7 @@ package io.liteglue;
       /* check state (should be checked by caller): */
       if (sthandle == 0) return -1;
 
-      return SQLiteNative.sqlc_st_column_count(this.sthandle);
+      return SQLiteNDKNativeDriver.sqlc_st_column_count(this.sthandle);
     }
 
     @Override
@@ -145,7 +145,7 @@ package io.liteglue;
       /* check state (should be checked by caller): */
       if (sthandle == 0) return null;
 
-      return SQLiteNative.sqlc_st_column_name(this.sthandle, col);
+      return SQLiteNDKNativeDriver.sqlc_st_column_name(this.sthandle, col);
     }
 
     @Override
@@ -153,7 +153,7 @@ package io.liteglue;
       /* check state (should be checked by caller): */
       if (sthandle == 0) return -1;
 
-      return SQLiteNative.sqlc_st_column_type(this.sthandle, col);
+      return SQLiteNDKNativeDriver.sqlc_st_column_type(this.sthandle, col);
     }
 
     @Override
@@ -161,7 +161,7 @@ package io.liteglue;
       /* check state (should be checked by caller): */
       if (sthandle == 0) return -1;
 
-      return SQLiteNative.sqlc_st_column_double(this.sthandle, col);
+      return SQLiteNDKNativeDriver.sqlc_st_column_double(this.sthandle, col);
     }
 
     @Override
@@ -169,7 +169,7 @@ package io.liteglue;
       /* check state (should be checked by caller): */
       if (sthandle == 0) return -1;
 
-      return SQLiteNative.sqlc_st_column_int(this.sthandle, col);
+      return SQLiteNDKNativeDriver.sqlc_st_column_int(this.sthandle, col);
     }
 
     @Override
@@ -177,7 +177,7 @@ package io.liteglue;
       /* check state (should be checked by caller): */
       if (sthandle == 0) return -1;
 
-      return SQLiteNative.sqlc_st_column_long(this.sthandle, col);
+      return SQLiteNDKNativeDriver.sqlc_st_column_long(this.sthandle, col);
     }
 
     @Override
@@ -185,7 +185,7 @@ package io.liteglue;
       /* check state (should be checked by caller): */
       if (sthandle == 0) return null;
 
-      return SQLiteNative.sqlc_st_column_text_native(this.sthandle, col);
+      return SQLiteNDKNativeDriver.sqlc_st_column_text_native(this.sthandle, col);
     }
 
     @Override
@@ -197,7 +197,7 @@ package io.liteglue;
       sql = null;
       sthandle = 0;
 
-      return SQLiteNative.sqlc_st_finish(mysthandle);
+      return SQLiteNDKNativeDriver.sqlc_st_finish(mysthandle);
     }
 
     String sql = null;
