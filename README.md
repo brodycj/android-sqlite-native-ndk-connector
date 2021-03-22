@@ -1,10 +1,12 @@
 # Android sqlite connector
 
-Java classes with abstract interface layers to provide a simple, easy-to-use Java interface to the andriod-sqlite-native-driver library (may be adapted for other Java environments).
+Java classes with abstract interface layers to provide a simple, easy-to-use Java interface to the NDK library (may be adapted for other Java environments).
 
 With a simple test Android app included.
 
-by Christopher J. Brody aka Chris Brody mailto: brodybits@litehelpers.net
+by Christopher J. Brody aka Chris Brody mailto: <chris.brody+brodybits@gmail.com>
+
+with some complex API response type enhancements by Luis Silva of OutSystems (luis dot silva at outsystems dot com)
 
 License: UNLICENSE (public domain).
 
@@ -12,35 +14,32 @@ License: UNLICENSE (public domain).
 
 ### Included:
 
-- `src/io/liteglue/SQLiteNative.java` - low-level Java class from  [@liteglue / Android-sqlite-native-driver](https://github.com/liteglue/Android-sqlite-native-driver)
+TBD
 
 ### Not included
 
-- Native Android libraries, provided in `sqlite-native-driver-libs.zip` as built from [@liteglue / Android-sqlite-native-driver](https://github.com/liteglue/Android-sqlite-native-driver)
+- Android NDK library (JAR file)
 
-## TBD (TEMPORARILY BROKEN) Alternative native library builds
+## Alternative native library builds
 
-- ~~**SQLCipher** - `sqlcipher-native-driver.jar` with native Android libraries that provide SQLCipher, as built from [@liteglue / Android-sqlcipher-native-driver](https://github.com/liteglue/Android-sqlcipher-native-driver)~~
-- ~~**SQLite with ICU** - Native Android libraries with ICU built-in, as built from [@liteglue / Android-sqlite-native-driver-ICU](https://github.com/liteglue/Android-sqlite-native-driver-ICU)~~
-
-**WARNING:** It is recommended to extract the native per-CPU Android library subdirectories from the JAR and put them in the `libs` directory of your project. Some newer Android systems do not
+TBD
 
 ## Installation
 
 Include the following in your `libs` directory:
-- Contents of the `libs` subdirectory from `sqlite-native-driver-libs.zip`, as built from [@liteglue / Android-sqlite-native-driver](https://github.com/liteglue/Android-sqlite-native-driver) ~~-- or `sqlcipher-native-driver.jar` as built in [@liteglue / Android-sqlcipher-native-driver](https://github.com/liteglue/Android-sqlcipher-native-driver)~~
+
+- NDK JAR library
 - `sqlite-connector.jar`, which is built by simply issuing the `make` command in this project
 
 ## Testing
 
 There is a simple test project in the `Android-SQLiteConnectorTest` subdirectory. To test:
-- Build `sqlite-connector.jar` in this project (using the `make` command)
-- Build the `sqlite-native-driver` native libs in [@liteglue / Android-sqlite-native-driver](https://github.com/liteglue/Android-sqlite-native-driver)
+
+- Use the `make` command to build the JAR
+- Build the NDK JAR
 - `cd Android-SQLiteConnectorTest`
-- Install `sqlite-connector.jar` and the contents of the `libs` subdirectory from `sqlite-native-driver-libs.zip` into the `libs` subdirectory of `Android-SQLiteConnectorTest` as described above
-- You *may* have to update your project using a command like: `android update project -p .`
-- install it on your emulator or device: `ant debug install`
-- run it on your emulator or device
+- Install the JAR files into the `libs` subdirectory of `Android-SQLiteConnectorTest`
+- Use a tool such as Android Studio to build and run (import is needed for newer versions of Android Studio)
 
 ## Sample API Usage
 
@@ -69,7 +68,7 @@ SQLiteConnection mydbc = myconnector.newSQLiteConnection(dbfile.getAbsolutePath(
     SQLiteOpenFlags.READWRITE | SQLiteOpenFlags.CREATE);
 ```
 
-OPTIONAL, for use with `sqlcipher-native-driver.jar` *only*: to specify the password key:
+OPTIONAL, for use with SQLCipher JAR *only*: to specify the password key:
 
 ```Java
 mydbc.keyNativeString("your-password");
