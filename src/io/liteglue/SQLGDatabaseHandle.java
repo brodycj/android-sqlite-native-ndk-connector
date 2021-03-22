@@ -21,14 +21,6 @@ package io.liteglue;
   }
 
   @Override
-  public int keyNativeString(String key) {
-    /* check state (should be checked by caller): */
-    if (dbhandle == 0) return SQLCode.MISUSE;
-
-    return SQLiteNative.sqlc_db_key_native_string(this.dbhandle, key);
-  }
-
-  @Override
   public int close() {
     /* check state (should be checked by caller): */
     if (dbhandle == 0) return SQLCode.MISUSE;

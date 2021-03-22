@@ -68,12 +68,6 @@ SQLiteConnection mydbc = myconnector.newSQLiteConnection(dbfile.getAbsolutePath(
     SQLiteOpenFlags.READWRITE | SQLiteOpenFlags.CREATE);
 ```
 
-OPTIONAL, for use with SQLCipher JAR *only*: to specify the password key:
-
-```Java
-mydbc.keyNativeString("your-password");
-```
-
 ### Prepare and run a simple statement (with no parameters)
 
 ```Java
