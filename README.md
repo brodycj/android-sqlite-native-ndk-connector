@@ -4,6 +4,8 @@ Java classes with abstract interface layers to provide a simple, easy-to-use Jav
 
 With a simple test Android app included.
 
+Based on: [`liteglue / Android-sqlite-connector`](https://github.com/liteglue/Android-sqlite-connector)
+
 by Christopher J. Brody aka Chris Brody mailto: <chris.brody+brodybits@gmail.com>
 
 with some complex API response type enhancements by Luis Silva of OutSystems (luis dot silva at outsystems dot com)
@@ -18,7 +20,7 @@ TBD
 
 ### Not included
 
-- Android NDK library (JAR file)
+Android NDK library JAR build, from this for example: [`brodybits / android-sqlite-ndk-native-driver`](https://github.com/brodybits/android-sqlite-ndk-native-driver)
 
 ## Alternative native library builds
 
@@ -29,7 +31,7 @@ TBD
 Include the following in your `libs` directory:
 
 - NDK JAR library
-- `sqlite-connector.jar`, which is built by simply issuing the `make` command in this project
+- `sqlite-native-ndk-connector.jar`, which is built by simply issuing the `make` command in this project
 
 ## Testing
 
